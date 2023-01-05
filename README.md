@@ -1,6 +1,8 @@
 # HighPrecisionLVDT
 Submillimeter measurement of actuator displacement
 
+![alt text](doc/schematic.png)
+
 |QTY|	DESCRIPTION	|PART NAME| PRICE | URL | 
 | :---   | :---   | :---   | :---   | :---   |
 |1|	LVDT Displacement Sensor |	Placeholder | 156€ |	[Mouser](https://www.mouser.de/ProductDetail/Measurement-Specialties/02560389-000?qs=%252BgKeJhng5iU0wv8eGISM%252BA%3D%3D) |
