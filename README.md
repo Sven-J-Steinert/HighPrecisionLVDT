@@ -6,3 +6,4 @@ Submillimeter measurement of actuator displacement
 |1|	LVDT Displacement Sensor |	Placeholder |
 |1|	Microcontrollerboard |	ESP32-S3-DevKitC-1-N32R8V |
 |1|	24-bit ADC | ADS1220  |
+|1|	LVDT Signal Conditioner | AD698  |
