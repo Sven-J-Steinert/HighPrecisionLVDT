@@ -18,3 +18,18 @@ Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witz
 |1|	LVDT Signal Conditioner | AD698  | 54€  |	[Mouser](https://www.mouser.de/ProductDetail/Analog-Devices/AD698APZ?qs=NmRFExCfTkEHAhvFCYrQIg%3D%3D) |
 |1|	PSU | 1W +15/-15V  | 5,08 €  |	[Mouser](https://www.mouser.de/ProductDetail/Murata-Power-Solutions/NMA0512SC?qs=J6Z1PhGvUbzUsAajU0vuCg%3D%3D) [Reichelt](https://www.reichelt.de/dc-dc-wandler-nma-1-w-15-v-33-ma-sil-dual-nma0515sc-p140635.html?&nbc=1) |
 |4|	Capacitor | 16V  2200 µF  | 1,89€  |	[Mouser](https://www.mouser.de/ProductDetail/EPCOS-TDK/B41888C4228M000?qs=nadT%2FcWsIvC%2FjwByKwT1Sw%3D%3D) [Reichelt](https://www.reichelt.de/elko-radial-2200-f-16-v-105-low-esr-12-5x25-mm-rm-5-rad-lxz-16-2k2-p166372.html?&nbc=1) |
+
+
+# Signal Conditioner Parts
+
+|NAME| VALUE |
+| :---   | :---   |
+|R1	|17,50	kΩ|
+|R2	|34,54	kΩ|
+|R3	|6,29	kΩ|
+|R4	|1,00E+99	kΩ|
+|C1	|10	nF|
+|C2	|285,7142857	nF|
+|C3	|285,7142857	nF|
+|C4	|285,7142857	nF|
+
