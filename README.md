@@ -20,10 +20,10 @@ Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witz
 |4|	Capacitor | 16V  2200 µF  | 1,89€  |	[Mouser](https://www.mouser.de/ProductDetail/EPCOS-TDK/B41888C4228M000?qs=nadT%2FcWsIvC%2FjwByKwT1Sw%3D%3D) [Reichelt](https://www.reichelt.de/elko-radial-2200-f-16-v-105-low-esr-12-5x25-mm-rm-5-rad-lxz-16-2k2-p166372.html?&nbc=1) |
 
 
-# Signal Conditioner Parts
+# Signal Conditioner 
 
-|NAME| VALUE |
-| :---   | :---   |
+|NAME | VALUE |
+| :---   | ---:  |
 |R1	|17,50	kΩ|
 |R2	|34,54	kΩ|
 |R3	|6,29	kΩ|
