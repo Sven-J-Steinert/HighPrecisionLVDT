@@ -1,7 +1,7 @@
 # HighPrecisionLVDT
 This project is created during Praktikum Raumfahrtelektronik - Lehrstuhl für Raumfahrttechnik at the Technische Universität München (TUM).
 This board carries out submillimeter measurement of an actuator displacement, which is part of a test-setup to transport Regolith via hoppers.
-As a sensing unit an LVDT is used, that is driven by a Signal Conditioner which gets read by a 24-bit ADC to a MCU where the Experiment data is then delivered via WiFi.
+As a sensing unit an LVDT is used, that is driven by a Signal Conditioner which gets read by a 24-bit ADC to a MCU where the Experiment data is then delivered via USB.
 
 Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witzel](https://github.com/TheWisator) and [Sven Julius Steinert](https://github.com/Sven-J-Steinert)
 
@@ -31,5 +31,5 @@ The Python app gives easy access to the recording functionality. However the MCU
 | 0 |	0x48 | start recording | RECORDING\nEND | 
 | 1 |	0x49 | stop recording | STOPPED\nEND | 
 | 2 |	0x50 | start download | <.csv file> | 
-| 3 |	0x51 | Enable STREAM |  | 
+| 3 |	0x51 | Enable STREAM | <values> | 
 | 4 |	0x52 | Disable STREAM |  | 
