@@ -21,3 +21,15 @@ Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witz
 
 
 [Mouser Basket](https://www.mouser.de/ProjectManager/ProjectDetail.aspx?AccessID=b398b3da10 )
+
+# Application
+
+The Python app gives easy access to the recording functionality. However the MCU can also be controlled directly via COM Terminal with the following commands
+
+| CMD |	HEX | FUNCTION | ANSWER | 
+| :---   | :---   | :---   | :---   |
+| 0 |	0x48 | start recording | RECORDING\nEND | 
+| 1 |	0x49 | stop recording | STOPPED\nEND | 
+| 2 |	0x50 | start download | <.csv file> | 
+| 3 |	0x51 | Enable STREAM |  | 
+| 4 |	0x52 | Disable STREAM |  | 
