@@ -1,6 +1,9 @@
 import time
 import serial
 import serial.tools.list_ports
+import pandas as pd
+import plotly.express as px
+
 
 baudrate = 921600
 hardware_id = '10C4:EA60'
@@ -9,6 +12,11 @@ con_dic = {True:'CONNECTED',False:'DISCONNECTED'}
 state = 'STOPPED'
 dev_port = ''
 infostr = ''
+
+def plot_csv():
+	df = pd.read_csv('data.csv')
+	fig = px.line(df, x = 'time [ms]', y = 'value [mm]', title='Recorded Data from LVDT')
+	fig.show()
 
 def p_reline(str=''):
 	global connected
@@ -26,7 +34,7 @@ def start_connection(port):
 	try:
 		n = int(n)
 	except:
-		print(' ERROR: you didnt enter a valid number')
+		print(' ERROR: you didnt enter a valid integer')
 		exit(0)
 	ser.write(b'0')     # write 0 = RECORD to MCU
 	ans = ser.read_until(b'\nEND')
@@ -36,7 +44,8 @@ def start_connection(port):
 		try:
 			state = ans[24:-4].decode('UTF-8')
 		except:
-			print(f'{ans} not decodable')
+			#print(f'{ans} not decodable')
+			pass
 
 	for i in range(n):
 		p_reline(f'{i}/{n}')
@@ -52,20 +61,32 @@ def start_connection(port):
 	ans = ser.read_until(b'\nEND')
 	state = ans[:-4].decode('UTF-8')
 	p_reline()
-	cache = ''
+	cache = b''
 	while True:
-		data = ser.read_until(b'\n').decode('UTF-8')
-		if 'END-OF-FILE-SEQUENCE' in data:
+		if ser.in_waiting > 0:
+			cache += ser.read(ser.in_waiting)
+			time.sleep(0.1)
+		else:
 			break
-		p_reline(data.split(',')[0])
-		cache += data
+	try:
+		check = cache[-21:-1]
+		if check == b'END-OF-FILE-SEQUENCE':
+			p_reline('Transfer successful')
+		else:
+			p_reline(check.decode('UTF-8'))
+	except:
+		p_reline('unexpected Error')
 
-	with open('data.txt', 'w') as f:
-		f.write(cache)
+	with open('data.csv', 'wb') as f:
+		f.write(cache[:-21])
 	print()
 	ser.close()             # close port
 	state = 'STOPPED'
 	p_reline()
+	try:
+		plot_csv()
+	except:
+		print('Plotting Error')
 
 
 print("""

@@ -11,15 +11,16 @@ double time_buffer;
 char val_buffer_str[50];
 
 byte incomingByte = 0; // for incoming serial data
-String header = "time, value [mm]\n" ; // table head
+String header = "time [ms],value [mm]\n" ; // table head
 String databuffer = "" ; // buffer for recording data
 
 bool record = false;
 bool stream = false;
 unsigned long ref_time = 0;
-double value = 1.50040301;
+double value = 0.0;
 
 void setup() {
+  pinMode(A0,INPUT);
   // put your setup code here, to run once:
   Serial.begin(921600);
   // dynamically Allocate 48kB of RAM for time_RAM
@@ -34,6 +35,7 @@ void loop() {
   if (record){
     if(index_RAM < RAM_STORAGE_SIZE){
       // read ADC
+      value = analogRead(A0);
       // prepare value and time to write
       time_buffer = (millis()-ref_time);
       val_buffer = value;
@@ -47,7 +49,7 @@ void loop() {
     }
   else if (stream){
     // read ADC
-    val_buffer = value;
+    val_buffer = analogRead(A0);
     dtostrf(val_buffer, 10, 8, val_buffer_str);
     Serial.println(val_buffer_str);
     delay(10);
@@ -79,7 +81,7 @@ void loop() {
         Serial.print("DOWNLOAD");
         Serial.print("\nEND");
         
-        //Serial.print(header);
+        Serial.print(header);
         for (int i = 0; i < index_RAM; ++i)
           {
             Serial.print(time_RAM[i]);
