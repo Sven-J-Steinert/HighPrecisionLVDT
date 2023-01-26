@@ -6,7 +6,6 @@ As a sensing unit an LVDT is used, that is driven by a Signal Conditioner which 
 Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witzel](https://github.com/TheWisator) and [Sven Julius Steinert](https://github.com/Sven-J-Steinert)
 
 # Application
-[![Download App](https://img.shields.io/github/v/release/unconsciou5/Lunar_Heightmap_Calculator?color=brightgreen&label=Download%20Executable&logo=windows&style=for-the-badge)](https://github.com/unconsciou5/Lunar_Heightmap_Calculator/releases/latest/download/Lunar_Heightmap_Calculator.exe)
 
 The [Python app](app/cli.py) gives easy access to the recording functionality. However the MCU can also be controlled directly via COM Terminal with the following commands
 
