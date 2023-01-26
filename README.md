@@ -6,7 +6,6 @@ As a sensing unit an LVDT is used, that is driven by a Signal Conditioner which 
 Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witzel](https://github.com/TheWisator) and [Sven Julius Steinert](https://github.com/Sven-J-Steinert)
 
 # Application
-[![Download App](https://img.shields.io/github/v/release/unconsciou5/Lunar_Heightmap_Calculator?color=brightgreen&label=Download%20Executable&logo=windows&style=for-the-badge)](https://github.com/unconsciou5/Lunar_Heightmap_Calculator/releases/latest/download/Lunar_Heightmap_Calculator.exe)
 
 The [Python app](app/cli.py) gives easy access to the recording functionality. However the MCU can also be controlled directly via COM Terminal with the following commands
 
@@ -24,14 +23,24 @@ The [Python app](app/cli.py) gives easy access to the recording functionality. H
 
 # Partlist
 
-|QTY|	DESCRIPTION	|PART NAME| PRICE | URL | 
-| :---   | :---   | :---   | :---   | :---   |
-|1|	LVDT Displacement Sensor |	Placeholder | 156€ |	[Mouser](https://www.mouser.de/ProductDetail/Measurement-Specialties/02560389-000?qs=%252BgKeJhng5iU0wv8eGISM%252BA%3D%3D) |
-|1|	Microcontrollerboard |	ESP32-S3-DevKitC-1-N8 | 18€ | [Mouser](https://www.mouser.de/ProductDetail/Espressif-Systems/ESP32-S3-DevKitC-1-N8?qs=Wj%2FVkw3K%252BMCTHFMHLvA1pQ%3D%3D) [Doc](https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html)|
-|1|	24-bit ADC | ADS1220IPWR  | 10€ | [LCSC](https://www.lcsc.com/product-detail/Analog-To-Digital-Converters-ADCs_Texas-Instruments-ADS1220IPWR_C48263.html) [DE](https://www.exp-tech.de/9105/olimex-bb-ads1220)	[Mouser](https://www.mouser.de/ProductDetail/Texas-Instruments/ADS1220IPWR?qs=5GI1giJCN%252BI6s%2FWJGbZXXQ%3D%3D) [Lib](https://wolles-elektronikkiste.de/ads1220-4-kanal-24-bit-a-d-wandler) |
-|1|	LVDT Signal Conditioner | AD698  | 54€  |	[Mouser](https://www.mouser.de/ProductDetail/Analog-Devices/AD698APZ?qs=NmRFExCfTkEHAhvFCYrQIg%3D%3D) |
-|1|	PSU | 1W +15/-15V  | 5,08 €  |	[Mouser](https://www.mouser.de/ProductDetail/Murata-Power-Solutions/NMA0515SC?qs=PpY8XP9UEJGt%2FToOcuC6IQ%3D%3D) [Reichelt](https://www.reichelt.de/dc-dc-wandler-nma-1-w-15-v-33-ma-sil-dual-nma0515sc-p140635.html?&nbc=1) |
-|4|	Capacitor | 16V  2200 µF  | 1,89€  |	[Mouser](https://www.mouser.de/ProductDetail/EPCOS-TDK/B41888C4228M000?qs=nadT%2FcWsIvC%2FjwByKwT1Sw%3D%3D) [Reichelt](https://www.reichelt.de/elko-radial-2200-f-16-v-105-low-esr-12-5x25-mm-rm-5-rad-lxz-16-2k2-p166372.html?&nbc=1) |
-
-
-[Mouser Basket](https://www.mouser.de/ProjectManager/ProjectDetail.aspx?AccessID=b398b3da10 )
+|Mfr. No|Manufacturer|Description|Qty.|Price|
+|:----|:----|:----|----:|----:|
+|02560389-000|TE Connectivity|Linear Displacement Sensors HR 050 LVDT .05in|1|166,31 €|
+|AD698APZ|Analog Devices Inc.|Sensor Interface LVDT SIGNAL CONDITIONER|1|54,27 €|
+|ADS1220IPWR|Olimex| BB-ADS1220 4 Channel Sigma Delta Precise 24-Bit ADC Breakboard | 1 | 13,00 €|
+|ESP32-S3-DevKitC-1-N8|Espressif|WiFi Development Tools - 802.11 ESP32-S3 General-Purpose Development Board, ESP32-S3-WROOM-1-N8, with Pin Header|1|15,00 €|
+|ERJ-8ENF1742V|Panasonic|Thick Film Resistors - SMD 1206 17.4Kohms 1% AEC-Q200|3|0,18 €|
+|ERA-8AEB1692V|Panasonic|Thin Film Resistors - SMD 1206 16.9Kohm 25ppm 0.1% AEC-Q200|3|0,66 €|
+|TNPW12066K26BEEN|Vishay|Thin Film Resistors - SMD 6.26Kohms .1% 25ppm|3|0,92 €|
+|HV732BTTD1004D|KOA Speer|Thick Film Resistors - SMD 0.25W 1M 0.5% 500 VOLTS|3|0,563 €|
+|C1206C104J1RACAUTO|KEMET|Multilayer Ceramic Capacitors MLCC - SMD/SMT 100V 0.1uF X7R 1206  5% AEC-Q200|13|0,199 €|
+|12065A102GAT4A|KYOCERA AVX|Multilayer Ceramic Capacitors MLCC - SMD/SMT 50V 1000pF C0G 1206 2% Tol|3|0,65 €|
+|12065C334JAT2A|KYOCERA AVX|Multilayer Ceramic Capacitors MLCC - SMD/SMT 50V 0.33uF X7R 1206 5%|7|0,491 €|
+|12062A102GAT2A|KYOCERA AVX|Multilayer Ceramic Capacitors MLCC - SMD/SMT 200V 1000pF C0G 1206 2% Tol|3|0,87 €|
+|PX-28LCC|Kycon|IC & Component Sockets LCC 28P PBT|2|1,75 €|
+|CR1206-FX-47R0ELF|Bourns|Thick Film Resistors - SMD 47ohm 1%|11|0,045 €|
+|CR0402-FX-4533GLF|Bourns|Thick Film Resistors - SMD CHIP RESISTOR|10|0,058 €|
+|B41888C4228M000|EPCOS / TDK|Aluminium Electrolytic Capacitors - Radial Leaded 16VDC 2200uF 20% STD Leads|4|1,89 €|
+|C1206C685K4PACTU|KEMET|Multilayer Ceramic Capacitors MLCC - SMD/SMT 16V 6.8uF X5R 1206 10%|5|0,87 €|
+|NMA0515SC|Murata|Isolated DC/DC Converters - Through Hole 1W  5-15V SIP DUAL DC/DC|2|5,08 €|
+|12063A103FAT2A|KYOCERA AVX|Multilayer Ceramic Capacitors MLCC - SMD/SMT 25V 0.01uF C0G 1206 1%|3|0,96 €|
