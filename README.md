@@ -23,8 +23,8 @@ The [Python app](app/cli.py) gives easy access to the recording functionality. H
 
 # Partlist
 
-|Mfr. No|Manufacturer|Description |Order Qty.|Price (EUR)|
-|:----|:----|:----|:----|:----|
+|Mfr. No|Manufacturer|Description|Qty.|Price|
+|:----|:----|:----|----:|----:|
 |02560389-000|TE Connectivity|Linear Displacement Sensors HR 050 LVDT .05in|1|166,31 €|
 |AD698APZ|Analog Devices Inc.|Sensor Interface LVDT SIGNAL CONDITIONER|1|54,27 €|
 |ADS1220IPWR|Olimex| BB-ADS1220 4 Channel Sigma Delta Precise 24-Bit ADC Breakboard | 1 | 13,00 €|
