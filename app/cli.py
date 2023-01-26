@@ -1,8 +1,21 @@
 import time
-import serial
-import serial.tools.list_ports
-import pandas as pd
-import plotly.express as px
+import subprocess
+
+while True:
+	try:
+		import serial
+		import serial.tools.list_ports
+		import pandas as pd
+		import plotly.express as px
+		break
+	except:
+		ans = input('Missing libraries. Do you want me to install them for you? (pyserial pandas plotly) [Y]/n: ')
+		if ans in ['N','n','no','No']:
+			exit(0)
+		else:
+			subprocess.run("pip install pyserial pandas plotly", shell=True)
+			print('')
+			print('reloading libraries')
 
 
 baudrate = 921600
@@ -33,6 +46,7 @@ def start_connection(port):
 	n = input(infostr + 'Enter seconds to record: ')
 	try:
 		n = int(n)
+		if n > 120: n = 120
 	except:
 		print(' ERROR: you didnt enter a valid integer')
 		exit(0)
