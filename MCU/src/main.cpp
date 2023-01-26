@@ -1,4 +1,12 @@
 #include <Arduino.h>
+#include <ADS1220_WE.h>
+#include <SPI.h>
+
+// 24-bit ADC
+#define ADS1220_CS_PIN    10 // chip select pin
+#define ADS1220_DRDY_PIN  8 // data ready pin 
+
+ADS1220_WE ads = ADS1220_WE(ADS1220_CS_PIN, ADS1220_DRDY_PIN); // using Default SPI Pins
 
 // RAM Storage
 #define RAM_STORAGE_SIZE 12000 // with 100 [Hz] results in 120 [s] max
@@ -20,22 +28,29 @@ unsigned long ref_time = 0;
 double value = 0.0;
 
 void setup() {
-  pinMode(A0,INPUT);
-  // put your setup code here, to run once:
-  Serial.begin(921600);
+  // MCU bootinfo during startup is passed in 115200 baudrate
+  Serial.begin(921600); // very high speed, no bitloss observed however
   // dynamically Allocate 48kB of RAM for time_RAM
   time_RAM = new long[RAM_STORAGE_SIZE];
   // dynamically Allocate 48kB of RAM for value_RAM
   value_RAM = new double[RAM_STORAGE_SIZE];
+  // initialize ADC
+  if(!ads.init()){
+    Serial.println("ERROR | ADS1220 not found!"); // should hopefully never occur
+    while(1);
+  }
+  ads.bypassPGA(true);
+  ads.setRefp0Refn0AsVefAndCalibrate();
+  ads.setCompareChannels(ADS1220_MUX_0_AVSS); // measure IN0 to AVSS (AVDD as max value)
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  
 
   if (record){
     if(index_RAM < RAM_STORAGE_SIZE){
       // read ADC
-      value = analogRead(A0);
+      value = ads.getVoltage_mV();
       // prepare value and time to write
       time_buffer = (millis()-ref_time);
       val_buffer = value;
@@ -44,12 +59,13 @@ void loop() {
       value_RAM[index_RAM] = val_buffer;
       ++index_RAM;
 
-      delay(10);
+      //delay(10); // could've been also done via interrupts for more accurate timing performance
+      // interrupts not implemented due to missing necessity
       }
     }
   else if (stream){
     // read ADC
-    val_buffer = analogRead(A0);
+    val_buffer = ads.getVoltage_mV();
     dtostrf(val_buffer, 10, 8, val_buffer_str);
     Serial.println(val_buffer_str);
     delay(10);
