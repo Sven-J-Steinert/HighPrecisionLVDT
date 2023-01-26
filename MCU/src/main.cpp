@@ -26,6 +26,7 @@ bool record = false;
 bool stream = false;
 unsigned long ref_time = 0;
 double value = 0.0;
+ulong last_measure = 0;
 
 void setup() {
   // MCU bootinfo during startup is passed in 115200 baudrate
@@ -42,13 +43,15 @@ void setup() {
   ads.bypassPGA(true);
   ads.setRefp0Refn0AsVefAndCalibrate();
   ads.setCompareChannels(ADS1220_MUX_0_AVSS); // measure IN0 to AVSS (AVDD as max value)
+  ads.setDataRate(ADS1220_DR_LVL_6);
 }
 
 void loop() {
   
 
   if (record){
-    if(index_RAM < RAM_STORAGE_SIZE){
+    if(index_RAM < RAM_STORAGE_SIZE && millis()>=last_measure+10){
+      last_measure = millis();
       // read ADC
       value = ads.getVoltage_mV();
       // prepare value and time to write
@@ -83,7 +86,7 @@ void loop() {
         Serial.print("\nEND");
         record = true;
         stream = false;
-        ref_time = millis();
+        ref_time = millis()+1;
         break;
       case 49:
         // Stop Recording = '1' = 49 [ASCII]
