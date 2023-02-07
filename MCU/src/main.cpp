@@ -9,7 +9,7 @@
 ADS1220_WE ads = ADS1220_WE(ADS1220_CS_PIN, ADS1220_DRDY_PIN); // using Default SPI Pins
 
 // RAM Storage
-#define RAM_STORAGE_SIZE 12000 // with 100 [Hz] results in 120 [s] max
+#define RAM_STORAGE_SIZE 12000 // with 200 [Hz] results in 60 [s] max
 long *time_RAM; // 4 Bytes per entry
 double *value_RAM; // 4 Bytes per entry
 
@@ -29,15 +29,15 @@ double value = 0.0;
 ulong last_measure = 0;
 
 // define LVDT IC circuit properties
-const float U_min = 14.383;  // minimum DC voltage of LVDT IC in mV
-const float U_max = 4907.974;  // maximum DC voltage of LVDT IC in mV
-const float disp_range = 1.27;    // displacement measurement range in mm (+- 1.27mm)
+const double U_min = 12.785418;  // minimum DC voltage of LVDT IC in mV
+const double U_max = 4362.785418;  // maximum DC voltage of LVDT IC in mV
+const double disp_range = 1.27;    // displacement measurement range in mm (+- 1.27mm)
 //const float dU_dd = (U_max - U_min) / (disp_range);   // gradient VDc over displacement in VDC / mm
 
 // define LVDT properties
-const float sensitivity = 5777.8 / 25.4;  // LVDT sensitivity in mV/Vrms/mm
-const float U_0 = 0.004;                  // LVDT null voltage in Vrms
-const float U_exc = 3.5;                  // LVDT excitation voltage in Vrms
+const double sensitivity = 5777.8 / 25.4;  // LVDT sensitivity in mV/Vrms/mm
+const double U_0 = 0.004;                  // LVDT null voltage in Vrms
+const double U_exc = 3.5;                  // LVDT excitation voltage in Vrms
 
 void setup() {
   // MCU bootinfo during startup is passed in 115200 baudrate
@@ -57,21 +57,24 @@ void setup() {
   ads.setDataRate(ADS1220_DR_LVL_6);
 }
 
-long measure_displacement(long ADC_voltage){
+double mapfloat(double x, double in_min, double in_max, double out_min, double out_max){
+  return (double)(x - in_min) * (out_max - out_min) / (double)(in_max - in_min) + out_min;
+}
+
+double measure_displacement(double ADC_voltage){
   // input: ADC voltage in mV
   // output: displacement in mm
-  long displacement = map(ADC_voltage, U_min, U_max, -disp_range, disp_range);
+  double displacement = mapfloat(ADC_voltage, U_min, U_max, -disp_range, disp_range);
   return displacement;
 }
 
 void loop() {
-  
 
   if (record){
-    if(index_RAM < RAM_STORAGE_SIZE && millis()>=last_measure+10){
+    if(index_RAM < RAM_STORAGE_SIZE && millis()>=last_measure+5){
       last_measure = millis();
       // read ADC
-      value = ads.getVoltage_mV();
+      value = measure_displacement(ads.getVoltage_mV());
       // prepare value and time to write
       time_buffer = (millis()-ref_time);
       val_buffer = value;
@@ -80,16 +83,16 @@ void loop() {
       value_RAM[index_RAM] = val_buffer;
       ++index_RAM;
 
-      //delay(10); // could've been also done via interrupts for more accurate timing performance
+      // could've been also done via interrupts for more accurate timing performance
       // interrupts not implemented due to missing necessity
       }
     }
-  else if (stream){
+  else if (stream && millis()>=last_measure+2){
+    last_measure = millis();
     // read ADC
     val_buffer = measure_displacement(ads.getVoltage_mV());
     dtostrf(val_buffer, 10, 8, val_buffer_str);
     Serial.println(val_buffer_str);
-    delay(10);
   }
 
   if (Serial.available() > 0) {
