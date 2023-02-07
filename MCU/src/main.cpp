@@ -28,6 +28,17 @@ unsigned long ref_time = 0;
 double value = 0.0;
 ulong last_measure = 0;
 
+// define LVDT IC circuit properties
+const float U_min = 14.383;  // minimum DC voltage of LVDT IC in mV
+const float U_max = 4907.974;  // maximum DC voltage of LVDT IC in mV
+const float disp_range = 1.27;    // displacement measurement range in mm (+- 1.27mm)
+//const float dU_dd = (U_max - U_min) / (disp_range);   // gradient VDc over displacement in VDC / mm
+
+// define LVDT properties
+const float sensitivity = 5777.8 / 25.4;  // LVDT sensitivity in mV/Vrms/mm
+const float U_0 = 0.004;                  // LVDT null voltage in Vrms
+const float U_exc = 3.5;                  // LVDT excitation voltage in Vrms
+
 void setup() {
   // MCU bootinfo during startup is passed in 115200 baudrate
   Serial.begin(921600); // very high speed, no bitloss observed however
@@ -68,7 +79,7 @@ void loop() {
     }
   else if (stream){
     // read ADC
-    val_buffer = ads.getVoltage_mV();
+    val_buffer = measure_displacement(ads.getVoltage_mV());
     dtostrf(val_buffer, 10, 8, val_buffer_str);
     Serial.println(val_buffer_str);
     delay(10);
@@ -125,4 +136,11 @@ void loop() {
         break;
     }
   }
+}
+
+long measure_displacement(long ADC_voltage){
+  // input: ADC voltage in mV
+  // output: displacement in mm
+  long displacement = map(ADC_voltage, U_min, U_max, -disp_range, disp_range);
+  return displacement;
 }
