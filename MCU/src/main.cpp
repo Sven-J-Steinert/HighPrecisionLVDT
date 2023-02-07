@@ -57,6 +57,13 @@ void setup() {
   ads.setDataRate(ADS1220_DR_LVL_6);
 }
 
+long measure_displacement(long ADC_voltage){
+  // input: ADC voltage in mV
+  // output: displacement in mm
+  long displacement = map(ADC_voltage, U_min, U_max, -disp_range, disp_range);
+  return displacement;
+}
+
 void loop() {
   
 
@@ -136,11 +143,4 @@ void loop() {
         break;
     }
   }
-}
-
-long measure_displacement(long ADC_voltage){
-  // input: ADC voltage in mV
-  // output: displacement in mm
-  long displacement = map(ADC_voltage, U_min, U_max, -disp_range, disp_range);
-  return displacement;
 }
