@@ -30,7 +30,7 @@ We recommend to use the streaming mode via [SerialPlot v0.12](https://hackaday.i
 
 # LVDT Hardware Connection
 
-The PCB has to be connected to the LVDT sensor and a computer to operate. The power and data transmission for the LVDT are
+The PCB has to be connected to the LVDT sensor and a computer to operate. The power and data transmission for the LVDT are provided by a micro-USB connection.
 
 | PCB Label | LVDT Cable | FUNCTION | 
 | :---: | :---: | :---: |
