@@ -23,11 +23,12 @@ The PCB has to be connected to the sensor and a
 
 | PCB designator |	LVDT Cable | FUNCTION | ANSWER | 
 | :---:   | :---   | :---   | :---   |
-| '0' |	 | start recording | RECORDING\nEND | 
-| '1' |	 | stop recording | STOPPED\nEND | 
-| '2' |	 | start download | <.csv file> | 
-| '3' |	 | Enable STREAM | < values > | 
-| '4' |	 | Disable STREAM |  | 
+| PYRD |	 | yellow - red | Primary Coil | 
+| PYBK |	 | yellow- black | Primary Coil | 
+| SBK |	 | black | Secondary Coil | 
+| SRD |	 | red | Secondary Coil | 
+| SBL |	 | blue | Secondary Coil | 
+| SGN |	 | green | Secondary Coil | 
 
 # Schematic
 ![pcb](doc/pcb.png)
