@@ -21,7 +21,7 @@ The [Python app](app/cli.py) gives easy access to the recording functionality. H
 
 The PCB has to be connected to the sensor and a 
 
-| PCB designator |	LVDT Cable | FUNCTION | ANSWER | 
+| PCB designator |	LVDT Cable | FUNCTION 
 | :---:   | :---   | :---   | :---   |
 | PYRD |	 | yellow - red | Primary Coil | 
 | PYBK |	 | yellow- black | Primary Coil | 
