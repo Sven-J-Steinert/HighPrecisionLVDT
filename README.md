@@ -9,7 +9,9 @@ Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witz
 
 # Application
 
-The [Python app](app/cli.py) gives easy access to the recording functionality while autodetecting the device Port, saving the downloaded lines in data.csv and direct plotting via pyplot.
+![app](doc/app.png)
+
+The Python app gives easy access to the recording functionality while autodetecting the device Port, saving the downloaded lines in data.csv and direct plotting via pyplot.
 It can be downloaded in source as .py or as standalone .exe
 
 However, the MCU can also be controlled directly via COM Terminal at `baudrate = 921600` with the following commands
