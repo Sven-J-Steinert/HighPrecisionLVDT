@@ -17,6 +17,18 @@ The [Python app](app/cli.py) gives easy access to the recording functionality. H
 | '3' |	0x51 | Enable STREAM | < values > | 
 | '4' |	0x52 | Disable STREAM |  | 
 
+# Hardware Connections
+
+The PCB has to be connected to the sensor and a 
+
+| PCB designator |	LVDT Cable | FUNCTION | ANSWER | 
+| :---:   | :---   | :---   | :---   |
+| '0' |	 | start recording | RECORDING\nEND | 
+| '1' |	 | stop recording | STOPPED\nEND | 
+| '2' |	 | start download | <.csv file> | 
+| '3' |	 | Enable STREAM | < values > | 
+| '4' |	 | Disable STREAM |  | 
+
 # Schematic
 ![pcb](doc/pcb.png)
 ![schematic](doc/schematic.png)
