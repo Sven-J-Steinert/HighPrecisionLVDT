@@ -10,11 +10,10 @@ Contributors: [Beatriz Mas Sanz](https://github.com/beatrizmassanz), [Thilo Witz
 # Application
 
 ![app](doc/app.png)
-
-The Python app gives easy access to the recording functionality while autodetecting the device Port, saving the downloaded lines in data.csv and direct plotting via pyplot.
-It can be downloaded in source as .py or as standalone .exe
 [![Download Release](https://img.shields.io/github/v/release/Sven-J-Steinert/HighPrecisionLVDT?color=brightgreen&label=Download%20Python%20File&logo=Python&style=for-the-badge&logoColor=f5f5f5)](https://github.com/Sven-J-Steinert/HighPrecisionLVDT/releases/latest/download/cli.py)
 [![Download Release](https://img.shields.io/github/v/release/Sven-J-Steinert/HighPrecisionLVDT?color=brightgreen&label=Download%20Executable&logo=windows&style=for-the-badge)](https://github.com/Sven-J-Steinert/HighPrecisionLVDT/releases/latest/download/cli.exe)
+
+The Python app gives easy access to the recording functionality while autodetecting the device Port, saving the downloaded lines in data.csv and direct plotting via pyplot.
 
 However, the MCU can also be controlled directly via COM Terminal at `baudrate = 921600` with the following commands
 
