@@ -19,16 +19,16 @@ The [Python app](app/cli.py) gives easy access to the recording functionality. H
 
 # Hardware Connections
 
-The PCB has to be connected to the sensor and a 
+The PCB has to be connected to the sensor and a computer to operate. The power and data transmission are
 
-| PCB designator |	LVDT Cable | FUNCTION |
-| :---:   | :---   | :---   | :---   |
-| PYRD |	 yellow - red | Primary Coil | 
-| PYBK |	 yellow- black | Primary Coil | 
-| SBK |	 black | Secondary Coil | 
-| SRD |	 red | Secondary Coil | 
-| SBL |	 blue | Secondary Coil | 
-| SGN |	 green | Secondary Coil | 
+PCB designator | LVDT Cable | FUNCTION | 
+| :---: | :--- | :--- |
+| PYRD | yellow - red | Primary Coil | 
+| PYBK | yellow- black | Primary Coil | 
+| SBK | black | Secondary Coil | 
+| SRD | red | Secondary Coil | 
+| SBL | blue | Secondary Coil |
+| SGN | green | Secondary Coil |
 
 # Schematic
 ![pcb](doc/pcb.png)
