@@ -41,12 +41,17 @@ def p_reline(str=''):
 def start_connection(port):
 	global state
 
-	ser = serial.Serial(port=port,baudrate=baudrate)  # open serial port
+	try:
+		ser = serial.Serial(port=port,baudrate=baudrate)  # open serial port
+	except:
+		print('ERROR: Can not open Port - is it in use?')
+		input('press any button to exit')
+		exit(0)
 	infostr = f' {con_dic[connected]} │ {port} │  {state}  │ '
 	n = input(infostr + 'Enter seconds to record: ')
 	try:
 		n = int(n)
-		if n > 120: n = 120
+		if n > 60: n = 60
 	except:
 		print(' ERROR: you didnt enter a valid integer')
 		exit(0)
