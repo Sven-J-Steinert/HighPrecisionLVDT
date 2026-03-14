@@ -1,6 +1,6 @@
 # HighPrecisionLVDT
 This project is created during Praktikum Raumfahrtelektronik - Lehrstuhl für Raumfahrttechnik at the Technische Universität München (TUM).
-This board carries out submillimeter measurement of an actuator displacement, which is part of a test-setup to transport Regolith via hoppers.
+This board carries out submicrometer measurement of an actuator displacement, which is part of a test-setup to transport Regolith via hoppers.
 As a sensing unit an LVDT is used, that is driven by a Signal Conditioner which gets read by a 24-bit ADC to a MCU where the Experiment data is then delivered via USB.
 
 Without any additional filtering a 3 sigma precision of `0.000161 mm` was achieved.
